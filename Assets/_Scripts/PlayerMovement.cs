@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float Speed;
     private Vector2 moveVelocity;
     private Rigidbody2D rb;
-    Animator anim;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -20,24 +20,24 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move();
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+        anim.SetFloat("VelocityX", movement.x);
+        anim.SetFloat("VelocityY", movement.y);
+        anim.SetFloat("Magnitude", movement.magnitude);
 
-        if (rb.transform)
+        if (Input.GetMouseButtonDown(0))
         {
-           //transform.scale x-1 
+            anim.SetTrigger("isSlaySide");
+        } else if (Input.GetMouseButtonDown(1))
+        {
+            anim.SetTrigger("isSlayUp");
+        } else if (Input.GetKeyDown("e"))
+        {
+            anim.SetBool("isSlayCircle", true);
+            anim.SetBool("isSlayCircle", false);
         }
-    }
 
-    void move()
-    {
-        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
-        anim.SetBool("isMoving", moveInput.magnitude != 0);
-
-        anim.SetFloat("VelocityX", moveInput.x);
-        anim.SetFloat("VelocityY", moveInput.y);
-        moveVelocity = moveInput.normalized * Speed;
-        rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
+        transform.position = transform.position + movement * Time.deltaTime;
     }
 
 }

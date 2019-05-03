@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8689197160816388341}
   - component: {fileID: 8689197160816388340}
   - component: {fileID: 8689197160816388336}
-  - component: {fileID: 8689197160816388351}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -73,7 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: 899b8a3d50f37c44488271d8006b4ec6, type: 3}
+  m_Sprite: {fileID: 2110011435049513774, guid: fc7aa7e1904a64b40b5075bb287ee525,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1.2
+  anim: {fileID: 8689197160816388336}
 --- !u!58 &8689197160816388340
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ Animator:
   m_GameObject: {fileID: 8689197160816388342}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f087d9d17cfa3c445a3fa1c85d49dde0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1bdaf201ef8aabf4d8fd1f7ab05ea7d1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -153,15 +154,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8689197160816388351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8689197160816388342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ec9c56bc0875d4c8a038d9847fde97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
