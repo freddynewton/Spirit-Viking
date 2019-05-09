@@ -29,7 +29,7 @@ public class EnemyFollow : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
-            collision.gameObject.SetActive(false);
+            //collision.gameObject.SetActive(false);
             
         }
     }

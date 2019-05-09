@@ -20,10 +20,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 mousepos = Input.mousePosition;
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
         anim.SetFloat("VelocityX", movement.x);
         anim.SetFloat("VelocityY", movement.y);
         anim.SetFloat("Magnitude", movement.magnitude);
+
+
+        if(mousepos.x < this.transform.position.x)
+        {
+            this.transform.localScale = new Vector3(-1f, 1f, 1f);
+        } else
+        {
+            this.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -33,11 +45,17 @@ public class PlayerMovement : MonoBehaviour
             anim.SetTrigger("isSlayUp");
         } else if (Input.GetKeyDown("e"))
         {
-            anim.SetBool("isSlayCircle", true);
-            anim.SetBool("isSlayCircle", false);
+            anim.SetTrigger("isSlayCircle");
         }
 
         transform.position = transform.position + movement * Time.deltaTime;
+    }
+
+    IEnumerator waitCircle()
+    {
+        anim.SetBool("isSlayCircle", true);
+        yield return new WaitForSeconds(4);
+        anim.SetBool("isSlayCircle", false);
     }
 
 }

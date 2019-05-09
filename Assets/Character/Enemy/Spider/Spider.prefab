@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 8307685095037548809}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 870f6559a70c5b74d9dc30f54c75f6ca, type: 2}
+  m_Controller: {fileID: 9100000, guid: 198cd4b2eea510347b72dc4cc6fcecc4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -116,9 +116,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00404799, y: 0.0040479526}
   serializedVersion: 2
-  m_Radius: 0.075
+  m_Radius: 0.055569924
 --- !u!50 &8307685095037548852
 Rigidbody2D:
   serializedVersion: 4
@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.6
-  stoppingDistance: 0.1
+  stoppingDistance: 0.2
