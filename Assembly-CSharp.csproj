@@ -63,7 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\_Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Enemy\EnemyFollow.cs" />
+    <Compile Include="Assets\_Scripts\PlayerAttack.cs" />
     <Compile Include="Assets\_Scripts\PlayerMovement.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Surface User/Desktop/Unity Projekte/harvestfighter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
