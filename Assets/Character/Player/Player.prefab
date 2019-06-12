@@ -200,9 +200,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTimeBtwAttack: 0.3
   anim: {fileID: 8689197160816388336}
-  attackPos: {fileID: 908749142}
+  attackPosCircle: {fileID: 908749142}
+  attackPosSide: {fileID: 0}
+  attackPosUp: {fileID: 0}
   attackRange: 0.3
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
   damage: 5
+  timeLeft: -1
