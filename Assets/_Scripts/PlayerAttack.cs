@@ -36,13 +36,16 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1))
         {
+            Vector3 mousPos = Input.mousePosition;
+            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPosUp.position, attackRange, whatIsEnemies);
+
             anim.SetTrigger("isSlayUp");
+
         }
         else if (Input.GetKeyDown("e"))
         {
             timeLeft = 5f; 
             anim.SetTrigger("isSlayCircle");
-            
 
            
         }
@@ -61,5 +64,6 @@ public class PlayerAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPosCircle.position, attackRange);
+        Gizmos.DrawWireSphere(attackPosUp.position, attackRange);
     }
 }
