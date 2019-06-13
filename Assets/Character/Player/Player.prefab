@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 908749142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPosCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 319266444465355269}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPosUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8689197160816388340}
   - component: {fileID: 8689197160816388336}
   - component: {fileID: 2040703793}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a62acf3c436c1145a951db40c580957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1.2
+  Speed: 3
   anim: {fileID: 8689197160816388336}
 --- !u!58 &8689197160816388340
 CircleCollider2D:
@@ -197,7 +197,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.3
 --- !u!95 &8689197160816388336
 Animator:
   serializedVersion: 3
