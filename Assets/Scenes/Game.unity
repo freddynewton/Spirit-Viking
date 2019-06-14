@@ -232,6 +232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8974a1d0c3fff914ebea8d288b98bf76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomItems:
+  - {fileID: 5979639478385551987, guid: 1a0702923346198439990b3e95964b6f, type: 3}
+  - {fileID: 8647200285415073592, guid: 528cb0a8d240f864a973553620cfa400, type: 3}
+  - {fileID: 4666231285013186465, guid: c0c5b82df5c04904a9ce3adbc7fc5119, type: 3}
+  randomEnemies:
+  - {fileID: 8307685095037548809, guid: 138b5f441d1ccdc45846aa483e5ada71, type: 3}
   floorPrefab: {fileID: 4922090356757548653, guid: a7b04fab0f0aadb44b62b5bf1667882b,
     type: 3}
   wallPrefab: {fileID: 963831243389462696, guid: 0b710c624508e684db8532728a205328,
@@ -240,7 +246,9 @@ MonoBehaviour:
     type: 3}
   exitPrefab: {fileID: 9061592323899362363, guid: 4e2f36351b37e1d46a9d7fddb41e079b,
     type: 3}
-  totalFloorCount: 50
+  totalFloorCount: 179
+  itemSpawnPercent: 3
+  enemiesSpawnPercent: 4
   minX: 0
   maxX: 0
   minY: 0
