@@ -238,6 +238,23 @@ MonoBehaviour:
   - {fileID: 4666231285013186465, guid: c0c5b82df5c04904a9ce3adbc7fc5119, type: 3}
   randomEnemies:
   - {fileID: 8307685095037548809, guid: 138b5f441d1ccdc45846aa483e5ada71, type: 3}
+  roundedEdges:
+  - {fileID: 4764155650060685313, guid: 28f66150e146c0843856e60d77688062, type: 3}
+  - {fileID: 3141284725762096482, guid: cd9c82c046987214bba68793e4cb3b70, type: 3}
+  - {fileID: 6282224564740547931, guid: 650882685bee9d04083bb6ad85839e06, type: 3}
+  - {fileID: 2573819409092847703, guid: 8495a2e712b74504e91f9c4be6ba4125, type: 3}
+  - {fileID: 5208330548079104304, guid: b3579aeb3d5f7d144951b864ebda1da9, type: 3}
+  - {fileID: 1294030784275613256, guid: b9fcf37a7980bd645b90a5f1606f86eb, type: 3}
+  - {fileID: 363021847446792004, guid: 0027ab3500615414aa694dd847aba107, type: 3}
+  - {fileID: 8645263022469492833, guid: 7228e774a7c02b8408fa1e5d28569dbe, type: 3}
+  - {fileID: 2550440733323756058, guid: b1af49fbaa70c8f4a918d843f06e8855, type: 3}
+  - {fileID: 7458934932587411790, guid: f09566f0034ff6e489a436f2b44fa410, type: 3}
+  - {fileID: 3767522447103365062, guid: 830ab447ebf952044ac658cf201160b3, type: 3}
+  - {fileID: 1830562396388923346, guid: 6695db874faf33f498214962f48ed084, type: 3}
+  - {fileID: 6579539047504384397, guid: 79e0f2426e7c7474f9d2c16186449aad, type: 3}
+  - {fileID: 8013811296294044098, guid: af55ae16baab0d046a5824cea8117431, type: 3}
+  - {fileID: 7698156494386270048, guid: 28354e33b215fb14e85d38c93fbc8743, type: 3}
+  - {fileID: 8565998039654581916, guid: f64455211a37a5240a232b2c7f796b27, type: 3}
   floorPrefab: {fileID: 4922090356757548653, guid: a7b04fab0f0aadb44b62b5bf1667882b,
     type: 3}
   wallPrefab: {fileID: 963831243389462696, guid: 0b710c624508e684db8532728a205328,
@@ -246,10 +263,12 @@ MonoBehaviour:
     type: 3}
   exitPrefab: {fileID: 9061592323899362363, guid: 4e2f36351b37e1d46a9d7fddb41e079b,
     type: 3}
-  totalFloorCount: 179
+  totalFloorCount: 2479
   itemSpawnPercent: 3
   enemiesSpawnPercent: 4
   useRoundedEdges: 0
+  dungeonType: 2
+  windingHallPercent: 50
   minX: 0
   maxX: 0
   minY: 0

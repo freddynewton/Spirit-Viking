@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DungeonManager : MonoBehaviour
-{
+public enum DungeonType { Caverns, Rooms, WindingHalls  }
+
+public class DungeonManager : MonoBehaviour {
     public GameObject[] randomItems, randomEnemies, roundedEdges;
     public GameObject floorPrefab, wallPrefab, tilePrefab, exitPrefab;
     [Range(50, 5000)] public int totalFloorCount;
     [Range(0, 100)] public int itemSpawnPercent, enemiesSpawnPercent;
     public bool useRoundedEdges;
+    public DungeonType dungeonType;
+    [Range(0, 100)] public int windingHallPercent;
 
     [HideInInspector] public float minX, maxX, minY, maxY;
 
@@ -23,7 +26,13 @@ public class DungeonManager : MonoBehaviour
         hitSize = Vector2.one * 0.8f;
         floorMask = LayerMask.GetMask("Floor");
         wallMask = LayerMask.GetMask("Wall");
-        RandomWalker();
+        switch (dungeonType)
+        {
+            case DungeonType.Caverns: RandomWalker(); break;
+            case DungeonType.Rooms: RoomWalker(); break;
+            case DungeonType.WindingHalls: WindingHallsWalker(); break;
+        }
+
     }
 
     private void Update()
@@ -40,38 +49,115 @@ public class DungeonManager : MonoBehaviour
         floorList.Add(curPos);
         while (floorList.Count < totalFloorCount)
         {
-            switch (Random.Range(1, 5))
-            {
-                case 1: curPos += Vector3.up; break;
-                case 2: curPos += Vector3.right; break;
-                case 3: curPos += Vector3.down; break;
-                case 4: curPos += Vector3.left; break;
-            }
-            bool inFloorList = false;
-            for(int i = 0; i < floorList.Count; i++)
-            {
-                if(Vector3.Equals(curPos, floorList[i]))
-                {
-                    inFloorList = true;
-                    break;
-                }
-            }
-            if (!inFloorList)
+            curPos += RandomDirection();
+
+            if (!InFloorList(curPos))
             {
                 floorList.Add(curPos);
             }
         }
-        for(int i = 0; i < floorList.Count; i++)
+        StartCoroutine(DelayProgress());
+    }
+
+    void WindingHallsWalker()
+    {
+        Vector3 curPos = Vector3.zero;
+        floorList.Add(curPos);
+        while (floorList.Count < totalFloorCount)
+        {
+
+            curPos = TakeAHike(curPos);
+            int roll = Random.Range(0, 100);
+
+            if(roll > windingHallPercent)
+            {
+                RandomRoom(curPos);
+            }
+            
+
+        }
+        StartCoroutine(DelayProgress());
+    }
+
+    void RoomWalker()
+    {
+        Vector3 curPos = Vector3.zero;
+        floorList.Add(curPos);
+        while (floorList.Count < totalFloorCount)
+        {
+            curPos = TakeAHike(curPos);
+            RandomRoom(curPos);
+
+        }
+        StartCoroutine(DelayProgress());
+    }
+
+    Vector3 TakeAHike(Vector3 myPos)
+    {
+        Vector3 walkDir = RandomDirection();
+        int walkLength = Random.Range(9, 18);
+
+        for (int i = 0; i < walkLength; i++)
+        {
+
+            if (!InFloorList(myPos + walkDir))
+            {
+                floorList.Add(myPos + walkDir);
+            }
+            myPos += walkDir;
+        }
+        return myPos;
+    }
+
+    void RandomRoom(Vector3 myPos)
+    {
+        int width = Random.Range(1, 5);
+        int height = Random.Range(1, 5);
+        for (int w = -width; w <= width; w++)
+        {
+            for (int h = -height; h <= height; h++)
+            {
+                Vector3 offSet = new Vector3(w, h, 0);
+                if (!InFloorList(myPos + offSet))
+                {
+                    floorList.Add(myPos + offSet);
+                }
+            }
+        }
+    }
+
+    bool InFloorList(Vector3 myPos)
+    {
+        for (int i = 0; i < floorList.Count; i++)
+        {
+            if (Vector3.Equals(myPos, floorList[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    Vector3 RandomDirection()
+    {
+        switch (Random.Range(1, 5))
+        {
+            case 1: return Vector3.up;
+            case 2: return Vector3.right;
+            case 3: return Vector3.down;
+            case 4: return Vector3.left;
+        }
+        return Vector3.zero;
+    }
+
+    IEnumerator DelayProgress()
+    {
+        for (int i = 0; i < floorList.Count; i++)
         {
             GameObject goTile = Instantiate(tilePrefab, floorList[i], Quaternion.identity) as GameObject;
             goTile.name = tilePrefab.name;
             goTile.transform.SetParent(transform);
         }
-        StartCoroutine(DelayProgress());
-    }
-
-    IEnumerator DelayProgress()
-    {
         while (FindObjectsOfType<TileSpawner>().Length > 0)
         {
             yield return null;
@@ -87,7 +173,7 @@ public class DungeonManager : MonoBehaviour
                     if (!(Vector2.Equals(hitFloor.transform.position, floorList[floorList.Count - 1])))
                     {
                         Collider2D hitTop = Physics2D.OverlapBox(new Vector2(x, y + 1), hitSize, 0, wallMask);
-                        Collider2D hitRight = Physics2D.OverlapBox(new Vector2(x + 1, y ), hitSize, 0, wallMask);
+                        Collider2D hitRight = Physics2D.OverlapBox(new Vector2(x + 1, y), hitSize, 0, wallMask);
                         Collider2D hitBottom = Physics2D.OverlapBox(new Vector2(x, y - 1), hitSize, 0, wallMask);
                         Collider2D hitLeft = Physics2D.OverlapBox(new Vector2(x - 1, y), hitSize, 0, wallMask);
 
@@ -117,7 +203,7 @@ public class DungeonManager : MonoBehaviour
                 if (!hitRight) { bitVal += 2; }
                 if (!hitBottom) { bitVal += 4; }
                 if (!hitLeft) { bitVal += 8; }
-                if(bitVal > 0)
+                if (bitVal >= 0)
                 {
                     GameObject goEdge = Instantiate(roundedEdges[bitVal], new Vector2(x, y), Quaternion.identity) as GameObject;
                     goEdge.name = roundedEdges[bitVal].name;
@@ -129,7 +215,7 @@ public class DungeonManager : MonoBehaviour
 
     void RandomEnemies(Collider2D hitFloor, Collider2D hitTop, Collider2D hitRight, Collider2D hitBottom, Collider2D hitLeft)
     {
-        if(!hitTop && !hitRight && !hitBottom && !hitLeft)
+        if (!hitTop && !hitRight && !hitBottom && !hitLeft)
         {
             int roll = Random.Range(1, 101);
             if (roll <= enemiesSpawnPercent)
@@ -144,15 +230,15 @@ public class DungeonManager : MonoBehaviour
 
     void RandomItems(Collider2D hitFloor, Collider2D hitTop, Collider2D hitRight, Collider2D hitBottom, Collider2D hitLeft)
     {
-    if ((hitTop || hitRight || hitBottom || hitLeft) && !(hitTop && hitBottom) && !(hitLeft && hitRight))
-    {
-        int roll = Random.Range(1, 101);
-        if (roll <= itemSpawnPercent)
+        if ((hitTop || hitRight || hitBottom || hitLeft) && !(hitTop && hitBottom) && !(hitLeft && hitRight))
         {
-            int itemIndex = Random.Range(0, randomItems.Length);
-            GameObject goItem = Instantiate(randomItems[itemIndex], hitFloor.transform.position, Quaternion.identity) as GameObject;
-            goItem.name = randomItems[itemIndex].name;
-            goItem.transform.SetParent(hitFloor.transform);
+            int roll = Random.Range(1, 101);
+            if (roll <= itemSpawnPercent)
+            {
+                int itemIndex = Random.Range(0, randomItems.Length);
+                GameObject goItem = Instantiate(randomItems[itemIndex], hitFloor.transform.position, Quaternion.identity) as GameObject;
+                goItem.name = randomItems[itemIndex].name;
+                goItem.transform.SetParent(hitFloor.transform);
             }
         }
     }

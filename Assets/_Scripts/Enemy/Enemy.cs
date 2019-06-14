@@ -30,6 +30,6 @@ public class Enemy : MonoBehaviour
     {
         //Instantiate(bloodEffect, transform.position, Quaternion.identity);
         health -= damage;
-        Debug.Log("damage TAKEN!");
+
     }
 }
