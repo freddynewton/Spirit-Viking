@@ -5,18 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class DungeonManager : MonoBehaviour
 {
-    public GameObject[] randomItems, randomEnemies;
+    public GameObject[] randomItems, randomEnemies, roundedEdges;
     public GameObject floorPrefab, wallPrefab, tilePrefab, exitPrefab;
     [Range(50, 5000)] public int totalFloorCount;
     [Range(0, 100)] public int itemSpawnPercent, enemiesSpawnPercent;
+    public bool useRoundedEdges;
 
     [HideInInspector] public float minX, maxX, minY, maxY;
 
     List<Vector3> floorList = new List<Vector3>();
     LayerMask floorMask, wallMask;
 
+    Vector2 hitSize;
+
     private void Start()
     {
+        hitSize = Vector2.one * 0.8f;
         floorMask = LayerMask.GetMask("Floor");
         wallMask = LayerMask.GetMask("Wall");
         RandomWalker();
@@ -73,7 +77,6 @@ public class DungeonManager : MonoBehaviour
             yield return null;
         }
         ExitDoorWay();
-        Vector2 hitSize = Vector2.one * 0.8f;
         for (int x = (int)minX - 2; x <= (int)maxX + 2; x++)
         {
             for (int y = (int)minY - 2; y <= (int)maxY + 2; y++)
@@ -92,9 +95,36 @@ public class DungeonManager : MonoBehaviour
                         RandomEnemies(hitFloor, hitTop, hitRight, hitBottom, hitLeft);
                     }
                 }
+                roundedEdge(x, y);
             }
         }
 
+    }
+
+    void roundedEdge(int x, int y)
+    {
+        if (useRoundedEdges)
+        {
+            Collider2D hitWall = Physics2D.OverlapBox(new Vector2(x, y), hitSize, 0, wallMask);
+            if (hitWall)
+            {
+                Collider2D hitTop = Physics2D.OverlapBox(new Vector2(x, y + 1), hitSize, 0, wallMask);
+                Collider2D hitRight = Physics2D.OverlapBox(new Vector2(x + 1, y), hitSize, 0, wallMask);
+                Collider2D hitBottom = Physics2D.OverlapBox(new Vector2(x, y - 1), hitSize, 0, wallMask);
+                Collider2D hitLeft = Physics2D.OverlapBox(new Vector2(x - 1, y), hitSize, 0, wallMask);
+                int bitVal = 0;
+                if (!hitTop) { bitVal += 1; }
+                if (!hitRight) { bitVal += 2; }
+                if (!hitBottom) { bitVal += 4; }
+                if (!hitLeft) { bitVal += 8; }
+                if(bitVal > 0)
+                {
+                    GameObject goEdge = Instantiate(roundedEdges[bitVal], new Vector2(x, y), Quaternion.identity) as GameObject;
+                    goEdge.name = roundedEdges[bitVal].name;
+                    goEdge.transform.SetParent(hitWall.transform);
+                }
+            }
+        }
     }
 
     void RandomEnemies(Collider2D hitFloor, Collider2D hitTop, Collider2D hitRight, Collider2D hitBottom, Collider2D hitLeft)
