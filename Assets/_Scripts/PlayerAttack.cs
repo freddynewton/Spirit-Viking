@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    int curHealth;
 
     private float timeBtwAttack;
-    public float startTimeBtwAttack;
 
+    public float startTimeBtwAttack;
     public Animator anim;
     public Transform attackPosCircle;
     public Transform attackPosSide;
@@ -16,10 +17,12 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask whatIsEnemies;
     public int damage;
     public float timeLeft = -1f;
+    public int maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
+        curHealth = maxHealth;
         anim = gameObject.GetComponent<Animator>();
     }
 
@@ -58,6 +61,13 @@ public class PlayerAttack : MonoBehaviour
             }
             timeLeft -= Time.deltaTime;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("Player TakeDamage: " + damage);
+        curHealth -= damage;
+
     }
 
     private void OnDrawGizmosSelected()

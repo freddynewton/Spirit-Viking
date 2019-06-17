@@ -240,3 +240,4 @@ MonoBehaviour:
     m_Bits: 256
   damage: 5
   timeLeft: -1
+  maxHealth: 100
