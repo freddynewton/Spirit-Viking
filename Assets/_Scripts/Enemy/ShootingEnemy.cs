@@ -7,6 +7,7 @@ public class ShootingEnemy : MonoBehaviour
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
+    public float startTargeting;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
@@ -25,17 +26,19 @@ public class ShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector2.Distance(transform.position, player.position) > stoppingDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        }  else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) {
-            transform.position = this.transform.position;
-        } else if (Vector2.Distance(transform.position, player.position) < retreatDistance) {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+       
+        
+            if(Vector2.Distance(transform.position, player.position) > stoppingDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            }  else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) {
+                transform.position = this.transform.position;
+            } else if (Vector2.Distance(transform.position, player.position) < retreatDistance) {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
         }
-
-
-        if(timeBtwShots <= 0)
+        
+       
+        if (timeBtwShots <= 0 && (Vector2.Distance(transform.position, player.position) < startTargeting))
         {
             Instantiate(projectile, transform.position, Quaternion.identity);
             timeBtwShots = startTimeBtwShots;

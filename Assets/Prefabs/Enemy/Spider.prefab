@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8307685095037548854}
   - component: {fileID: -5631015819765601899}
+  - component: {fileID: 6719456597175110631}
   - component: {fileID: 8307685095037548855}
   - component: {fileID: 8307685095037548808}
   - component: {fileID: 8307685095037548851}
   - component: {fileID: 8307685095037548852}
-  - component: {fileID: 6719456597175110631}
   m_Layer: 8
   m_Name: Spider
   m_TagString: Enemy
@@ -51,10 +51,24 @@ MonoBehaviour:
   speed: 1.5
   stoppingDistance: 5
   retreatDistance: 3
-  startTimeBtwShots: 0
+  startTargeting: 10
+  startTimeBtwShots: 4
   projectile: {fileID: 3609486657289115952, guid: 89e2dde6268aeda48ae05a714cbe8b8a,
     type: 3}
-  player: {fileID: 0}
+--- !u!114 &6719456597175110631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307685095037548809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62d71020fd73c04bb4e3030f2a76e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 5
 --- !u!212 &8307685095037548855
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -160,17 +174,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6719456597175110631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8307685095037548809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e62d71020fd73c04bb4e3030f2a76e5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 5
