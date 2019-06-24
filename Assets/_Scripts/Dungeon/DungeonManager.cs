@@ -222,7 +222,7 @@ public class DungeonManager : MonoBehaviour {
             {
                 int enemyIndex = Random.Range(0, randomEnemies.Length);
                 GameObject goEnemy = Instantiate(randomEnemies[enemyIndex], hitFloor.transform.position, Quaternion.identity) as GameObject;
-                goEnemy.name = randomItems[enemyIndex].name;
+                //goEnemy.name = randomItems[enemyIndex].name;
                 goEnemy.transform.SetParent(hitFloor.transform);
             }
         }
