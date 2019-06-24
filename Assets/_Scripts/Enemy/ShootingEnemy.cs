@@ -16,6 +16,7 @@ public class ShootingEnemy : MonoBehaviour
 
     private Transform player;
     private int floorMask;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +25,18 @@ public class ShootingEnemy : MonoBehaviour
         timeBtwShots = startTimeBtwShots;
         Physics2D.queriesStartInColliders = false;
         floorMask = LayerMask.GetMask("Floor");
-
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()  
     {
+
+
+
+
+
+
         Vector3 dir = -(this.transform.position - player.transform.position).normalized;
 
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, startTargeting, floorMask);
@@ -52,15 +59,22 @@ public class ShootingEnemy : MonoBehaviour
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                anim.SetBool("isWalking", true);
+                this.transform.localScale = new Vector3(-1f, 1f, 1f);
             } else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) {
                 transform.position = this.transform.position;
+                anim.SetBool("isWalking", false);
+                lookAtPlayer();
             } else if (Vector2.Distance(transform.position, player.position) < retreatDistance) {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                anim.SetBool("isWalking", true);
+                this.transform.localScale = new Vector3(1f, 1f, 1f);
             }
 
 
             if (timeBtwShots <= 0)
             {
+                anim.SetTrigger("isShooting");
                 Instantiate(projectile, transform.position, Quaternion.identity);
                 timeBtwShots = startTimeBtwShots;
             } else
@@ -69,4 +83,18 @@ public class ShootingEnemy : MonoBehaviour
             }
         }
     }
+
+
+    public void lookAtPlayer()
+    {
+        if (player.transform.position.x < this.transform.position.x)
+        {
+            this.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            this.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+    }
+
 }
