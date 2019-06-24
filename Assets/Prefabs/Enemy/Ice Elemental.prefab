@@ -133,7 +133,7 @@ MonoBehaviour:
   speed: 2
   stoppingDistance: 1
   retreatDistance: 2
-  startTargeting: 10
+  startTargeting: 8
   startTimeBtwShots: 5
 --- !u!58 &7281453857227625730
 CircleCollider2D:

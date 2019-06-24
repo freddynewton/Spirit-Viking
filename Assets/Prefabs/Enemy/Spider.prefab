@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8307685095037548808}
   - component: {fileID: 8307685095037548851}
   - component: {fileID: 8307685095037548852}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Spider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
   speed: 1.5
   stoppingDistance: 5
   retreatDistance: 3
-  startTargeting: 8
+  startTargeting: 10
   startTimeBtwShots: 4
   projectile: {fileID: 3609486657289115952, guid: 89e2dde6268aeda48ae05a714cbe8b8a,
     type: 3}

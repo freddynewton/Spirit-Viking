@@ -15,7 +15,7 @@ TagManager:
   - 
   - 
   - Enemy
-  - Player
+  - 
   - 
   - 
   - Floor
@@ -37,7 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Player
   m_SortingLayers:
   - name: Floor
     uniqueID: 3646933397

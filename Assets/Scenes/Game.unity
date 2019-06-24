@@ -268,7 +268,7 @@ MonoBehaviour:
     type: 3}
   totalFloorCount: 1500
   itemSpawnPercent: 3
-  enemiesSpawnPercent: 10
+  enemiesSpawnPercent: 100
   useRoundedEdges: 0
   dungeonType: 2
   windingHallPercent: 50
@@ -516,6 +516,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8689197160816388342, guid: 39fdb7fe896ca794c83dd10f6ff47912,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8689197160816388337, guid: 39fdb7fe896ca794c83dd10f6ff47912,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -570,6 +575,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 908749141, guid: 39fdb7fe896ca794c83dd10f6ff47912, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 737576990288223035, guid: 39fdb7fe896ca794c83dd10f6ff47912,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39fdb7fe896ca794c83dd10f6ff47912, type: 3}

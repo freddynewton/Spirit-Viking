@@ -15,6 +15,7 @@ public class ElementalEnemy : MonoBehaviour {
     private Transform player;
     private int floorMask;
     private Animator anim;
+    private bool playerInSight;
 
     // Start is called before the first frame update
     void Start()
@@ -22,52 +23,50 @@ public class ElementalEnemy : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBtwShots = startTimeBtwShots;
         Physics2D.queriesStartInColliders = false;
-        floorMask = LayerMask.GetMask("Floor");
+        floorMask = LayerMask.GetMask("Wall");
         anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         Vector3 dir = -(this.transform.position - player.transform.position).normalized;
 
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, startTargeting, floorMask);
-        if (hitInfo.collider != null && hitInfo.collider.CompareTag("Player"))
+        if (hitInfo.collider != null)
         {
-            Debug.DrawLine(transform.position, hitInfo.point, Color.green);
-            if (hitInfo.collider.CompareTag("Player"))
+            if (hitInfo.collider.gameObject.CompareTag("Player"))
             {
-                print("hit player");
+                Debug.DrawLine(transform.position, hitInfo.point, Color.green);
+                print("Player in Sight");
+                playerInSight = true;
+            }
+            else
+            {
+                Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+                playerInSight = false;
             }
         }
-        else
-        {
-            Debug.DrawLine(transform.position, hitInfo.point, Color.red);
-        }
 
 
 
-        if (Vector2.Distance(transform.position, player.position) < startTargeting)
+        if (Vector2.Distance(transform.position, player.position) < startTargeting && playerInSight)
         {
 
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                //anim.SetBool("isWalking", true);
-                this.transform.localScale = new Vector3(1f, 1f, 1f);
+                lookAtPlayer(true);
             }
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
             {
                 transform.position = this.transform.position;
-                //anim.SetBool("isWalking", false);
-                lookAtPlayer();
+                //lookAtPlayer(true);
             }
             else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-                //anim.SetBool("isWalking", true);
-                this.transform.localScale = new Vector3(-1f, 1f, 1f);
+                lookAtPlayer(false);
             }
 
 
@@ -84,15 +83,29 @@ public class ElementalEnemy : MonoBehaviour {
     }
 
 
-    public void lookAtPlayer()
+    public void lookAtPlayer(bool negiert)
     {
-        if (player.transform.position.x < this.transform.position.x)
+        if (negiert == false)
         {
-            this.transform.localScale = new Vector3(-1f, 1f, 1f);
+            if (player.transform.position.x < this.transform.position.x)
+            {
+                this.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+                this.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
         }
         else
         {
-            this.transform.localScale = new Vector3(1f, 1f, 1f);
+            if (player.transform.position.x < this.transform.position.x)
+            {
+                this.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else
+            {
+                this.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
         }
     }
 
