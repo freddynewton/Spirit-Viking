@@ -57,16 +57,18 @@ public class ElementalEnemy : MonoBehaviour {
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 lookAtPlayer(true);
+                anim.SetBool("isWalking", true);
             }
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
             {
                 transform.position = this.transform.position;
-                //lookAtPlayer(true);
+                anim.SetBool("isWalking", false);
             }
             else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
                 lookAtPlayer(false);
+                anim.SetBool("isWalking", true);
             }
 
 

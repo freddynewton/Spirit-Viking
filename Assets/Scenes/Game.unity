@@ -241,6 +241,7 @@ MonoBehaviour:
   - {fileID: 2823372514689884953, guid: d5985b50013c339469cb59e3b567e93f, type: 3}
   - {fileID: 2823372514689884953, guid: 92f2216241e3258478bea1a36909a1ce, type: 3}
   - {fileID: 1830948847831514250, guid: 4b9d7544455c1d34e8ed1c405588ba27, type: 3}
+  - {fileID: 1830948847831514250, guid: 4b9d7544455c1d34e8ed1c405588ba27, type: 3}
   roundedEdges:
   - {fileID: 4764155650060685313, guid: 28f66150e146c0843856e60d77688062, type: 3}
   - {fileID: 3141284725762096482, guid: cd9c82c046987214bba68793e4cb3b70, type: 3}
@@ -266,9 +267,9 @@ MonoBehaviour:
     type: 3}
   exitPrefab: {fileID: 9061592323899362363, guid: 4e2f36351b37e1d46a9d7fddb41e079b,
     type: 3}
-  totalFloorCount: 1500
+  totalFloorCount: 1000
   itemSpawnPercent: 3
-  enemiesSpawnPercent: 100
+  enemiesSpawnPercent: 7
   useRoundedEdges: 0
   dungeonType: 2
   windingHallPercent: 50
