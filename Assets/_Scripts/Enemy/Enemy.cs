@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     {
         if(health <= 0)
         {
+            ScoreManager.score++;
             Destroy(gameObject);
         }
         

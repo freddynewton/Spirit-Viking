@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
-    int curHealth;
+    [HideInInspector]
+    public int curHealth;
 
     private float timeBtwAttack;
+    private int killedEnemiesCounter;
 
     public float startTimeBtwAttack;
     public Animator anim;
@@ -18,11 +21,13 @@ public class PlayerAttack : MonoBehaviour
     public int damage;
     public float timeLeft = -1f;
     public int maxHealth;
+    public Slider HealthSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         curHealth = maxHealth;
+        HealthSlider.value = maxHealth; 
         anim = gameObject.GetComponent<Animator>();
     }
 
@@ -47,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (Input.GetKeyDown("e"))
         {
+            damage = 5;
             timeLeft = 5f; 
             anim.SetTrigger("isSlayCircle");
 
@@ -55,6 +61,7 @@ public class PlayerAttack : MonoBehaviour
         if (timeLeft >= 0)
         {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPosCircle.position, attackRange, whatIsEnemies);
+
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
                 enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
@@ -67,6 +74,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Debug.Log("Player TakeDamage: " + damage);
         curHealth -= damage;
+        HealthSlider.value = curHealth;
 
     }
 

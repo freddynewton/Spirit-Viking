@@ -234,10 +234,11 @@ MonoBehaviour:
   attackPosCircle: {fileID: 908749142}
   attackPosSide: {fileID: 0}
   attackPosUp: {fileID: 319266444465355269}
-  attackRange: 0.3
+  attackRange: 0.6
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
   damage: 5
   timeLeft: -1
   maxHealth: 100
+  HealthSlider: {fileID: 0}

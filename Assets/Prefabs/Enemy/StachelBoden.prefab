@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6445948949469378732}
   - component: {fileID: 1084247944947147378}
   - component: {fileID: 3911575048040576031}
-  - component: {fileID: 5144997613153652052}
   m_Layer: 0
   m_Name: StachelBoden
   m_TagString: Untagged
@@ -129,19 +128,6 @@ BoxCollider2D:
   m_Size: {x: 0.8321705, y: 0.8858757}
   m_EdgeRadius: 0
 --- !u!114 &3911575048040576031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830948847831514250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e34e9514031d9a49944ca6ad674fed5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
---- !u!114 &5144997613153652052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

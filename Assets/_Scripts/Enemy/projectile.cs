@@ -5,6 +5,7 @@ using UnityEngine;
 public class projectile : MonoBehaviour
 {
     public float speed;
+    public int damage; 
 
     private Transform player;
     private Vector2 target;
@@ -31,6 +32,7 @@ public class projectile : MonoBehaviour
     {
        if (collision.CompareTag("Player"))
         {
+            collision.GetComponent<PlayerAttack>().TakeDamage(damage);
             DestroyProjectile();
         }    
     }

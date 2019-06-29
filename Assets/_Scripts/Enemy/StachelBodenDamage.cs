@@ -13,7 +13,7 @@ public class StachelBodenDamage : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            print("PlayerHit: " + damage + " damage");
+          //  print("PlayerHit: " + damage + " damage");
             collision.GetComponent<PlayerAttack>().TakeDamage(damage);
         }
     }

@@ -42,7 +42,7 @@ public class ShootingEnemy : MonoBehaviour
             if (hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 Debug.DrawLine(transform.position, hitInfo.point, Color.green);
-                print("Player in Sight");
+                //print("Player in Sight");
                 playerInSight = true;
             }
             else
