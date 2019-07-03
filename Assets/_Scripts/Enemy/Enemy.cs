@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public int health;
     public int maxHealth;
 
+    public ScoreManager scoreManager;
+
     //public GameObject bloodEffect;
 
     // private Animatior anim;
@@ -14,6 +16,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -21,7 +24,8 @@ public class Enemy : MonoBehaviour
     {
         if(health <= 0)
         {
-            ScoreManager.score++;
+            
+            scoreManager.score++;
             Destroy(gameObject);
         }
         

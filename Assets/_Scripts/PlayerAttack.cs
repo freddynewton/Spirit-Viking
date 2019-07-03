@@ -34,7 +34,10 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (HealthSlider == null)
+        {
+            HealthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
