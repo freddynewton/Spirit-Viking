@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2823372514689884930}
   - component: {fileID: 7281453857227625730}
   - component: {fileID: 7627079671928642576}
+  - component: {fileID: -5909211942057066394}
   m_Layer: 8
   m_Name: Ice Elemental
   m_TagString: Enemy
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 10
+  scoreManager: {fileID: 0}
 --- !u!114 &2823372514689884930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,11 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55e730e6399df44ca132f446be6235e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  stoppingDistance: 1
+  speed: 1.5
+  stoppingDistance: 0.5
   retreatDistance: 2
   startTargeting: 8
   startTimeBtwShots: 5
+  damage: 1
 --- !u!58 &7281453857227625730
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +175,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &-5909211942057066394
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823372514689884953}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15625

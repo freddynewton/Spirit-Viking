@@ -10,7 +10,7 @@ public class ElementalEnemy : MonoBehaviour {
 
     private float timeBtwShots;
     public float startTimeBtwShots;
-
+    public int damage;
 
     private Transform player;
     private int floorMask;
@@ -87,6 +87,16 @@ public class ElementalEnemy : MonoBehaviour {
         }  else
         {
             anim.SetBool("isWalking", false);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<PlayerAttack>().TakeDamage(damage);
+          
+
         }
     }
 

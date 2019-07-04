@@ -6,10 +6,12 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class PlayerAttack : MonoBehaviour
 {
     [HideInInspector]
     public int curHealth;
+    public Slider HealthSlider;
 
     private float timeBtwAttack;
     private int killedEnemiesCounter;
@@ -25,8 +27,10 @@ public class PlayerAttack : MonoBehaviour
     public int damage;
     public float timeLeft = -1f;
     public int maxHealth;
-    public Slider HealthSlider;
+
     public static PlayerAttack Instance { get; private set; }
+
+
 
     private void Awake()
     {
@@ -54,7 +58,6 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         this.transform.position = Vector3.zero;
         curHealth = maxHealth;
         HealthSlider.value = maxHealth; 
@@ -94,6 +97,8 @@ public class PlayerAttack : MonoBehaviour
         }
         if (timeLeft >= 0)
         {
+   
+
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPosCircle.position, attackRange, whatIsEnemies);
 
             for (int i = 0; i < enemiesToDamage.Length; i++)
