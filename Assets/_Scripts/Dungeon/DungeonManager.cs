@@ -45,7 +45,7 @@ public class DungeonManager : MonoBehaviour {
 
     void RandomWalker()
     {
-        Vector3 curPos = Vector3.zero;
+        Vector3 curPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         floorList.Add(curPos);
         while (floorList.Count < totalFloorCount)
         {
@@ -61,7 +61,7 @@ public class DungeonManager : MonoBehaviour {
 
     void WindingHallsWalker()
     {
-        Vector3 curPos = Vector3.zero;
+        Vector3 curPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         floorList.Add(curPos);
         while (floorList.Count < totalFloorCount)
         {
@@ -81,7 +81,7 @@ public class DungeonManager : MonoBehaviour {
 
     void RoomWalker()
     {
-        Vector3 curPos = Vector3.zero;
+        Vector3 curPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         floorList.Add(curPos);
         while (floorList.Count < totalFloorCount)
         {

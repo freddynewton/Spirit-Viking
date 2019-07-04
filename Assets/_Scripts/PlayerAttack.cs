@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
@@ -22,10 +25,35 @@ public class PlayerAttack : MonoBehaviour
     public float timeLeft = -1f;
     public int maxHealth;
     public Slider HealthSlider;
+    public static PlayerAttack Instance { get; private set; }
+
+    private void Awake()
+    {
+        
+        this.transform.position = Vector3.zero;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        transform.position = Vector3.zero;
+    }
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.position = Vector3.zero;
         curHealth = maxHealth;
         HealthSlider.value = maxHealth; 
         anim = gameObject.GetComponent<Animator>();
