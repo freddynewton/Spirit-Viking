@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 10
+  scoreManager: {fileID: 0}
 --- !u!114 &2823372514689884930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  stoppingDistance: 1
+  stoppingDistance: 0.5
   retreatDistance: 2
   startTargeting: 8
   startTimeBtwShots: 5

@@ -83,6 +83,9 @@ public class ShootingEnemy : MonoBehaviour
             {
                 timeBtwShots -= Time.deltaTime;
             }
+        } else
+        {
+            anim.SetBool("isWalking", false);
         }
     }
 

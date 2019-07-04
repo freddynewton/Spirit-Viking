@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
 
     private float timeBtwAttack;
     private int killedEnemiesCounter;
+    private ParticleSystem fireCicle;
 
     public float startTimeBtwAttack;
     public Animator anim;
@@ -53,6 +54,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         this.transform.position = Vector3.zero;
         curHealth = maxHealth;
         HealthSlider.value = maxHealth; 
@@ -83,6 +85,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (Input.GetKeyDown("e"))
         {
+
             damage = 5;
             timeLeft = 5f; 
             anim.SetTrigger("isSlayCircle");

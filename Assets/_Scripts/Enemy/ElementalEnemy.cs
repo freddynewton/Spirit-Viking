@@ -84,6 +84,9 @@ public class ElementalEnemy : MonoBehaviour {
             {
                 timeBtwShots -= Time.deltaTime;
             }
+        }  else
+        {
+            anim.SetBool("isWalking", false);
         }
     }
 
