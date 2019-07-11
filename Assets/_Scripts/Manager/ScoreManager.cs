@@ -8,9 +8,11 @@ public class ScoreManager : MonoBehaviour
 
     public static ScoreManager Instance { get; private set; }
     public int score;
+    public int points;
 
 
     public Text text;
+    public Text pointText;
 
     private void Awake()
     {
@@ -41,5 +43,11 @@ public class ScoreManager : MonoBehaviour
             text = GameObject.Find("ScoreText").GetComponent<Text>();
         }
         text.text = "Kills: " + score;
+
+        if(pointText == null)
+        {
+            pointText = GameObject.Find("PointText").GetComponent<Text>();
+        }
+        pointText.text = "Points: " + points;
     }
 }

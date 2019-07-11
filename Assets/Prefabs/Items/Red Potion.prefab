@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4666231285013186492}
   - component: {fileID: 4666231285013186467}
   - component: {fileID: 4666231285013186466}
+  - component: {fileID: -7288519479736711023}
   m_Layer: 0
   m_Name: Red Potion
   m_TagString: Untagged
@@ -106,3 +107,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33616555, y: 0.38435268}
   m_EdgeRadius: 0
+--- !u!114 &-7288519479736711023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666231285013186465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4962c1b3847debe47bcbb747181c6eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 15

@@ -38,7 +38,6 @@ public class ElementalEnemy : MonoBehaviour {
             if (hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 Debug.DrawLine(transform.position, hitInfo.point, Color.green);
-                //print("Player in Sight");
                 playerInSight = true;
             }
             else
@@ -60,20 +59,13 @@ public class ElementalEnemy : MonoBehaviour {
                 anim.SetBool("isWalking", true);
             }
             
-            else if (Vector2.Distance(transform.position, player.position) < stoppingDistance /*&& Vector2.Distance(transform.position, player.position) > retreatDistance*/)
+            else if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
             {
                 lookAtPlayer(true);
                 transform.position = this.transform.position;
                 anim.SetBool("isWalking", false);
             }
-            /*
-            else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-                lookAtPlayer(false);
-                anim.SetBool("isWalking", true);
-            }
-            */
+
 
             if (timeBtwShots <= 0)
             {

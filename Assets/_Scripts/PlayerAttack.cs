@@ -117,6 +117,18 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    public void TakeHeal(int heal)
+    {
+        Debug.Log("Player TakeHeal: " + heal);
+        curHealth += heal;
+        if (curHealth > maxHealth)
+        {
+            curHealth = maxHealth; 
+        }
+
+        HealthSlider.value = curHealth;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

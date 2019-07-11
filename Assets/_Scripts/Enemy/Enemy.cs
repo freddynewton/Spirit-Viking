@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public int maxHealth;
+    public int points;
 
     public ScoreManager scoreManager;
 
@@ -24,8 +25,9 @@ public class Enemy : MonoBehaviour
     {
         if(health <= 0)
         {
-            
+
             scoreManager.score++;
+            scoreManager.points += points;
             Destroy(gameObject);
         }
         
