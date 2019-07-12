@@ -23,6 +23,10 @@ public class DungeonManager : MonoBehaviour {
 
     private void Start()
     {
+        
+        dungeonType = SaveLoad.dungeonType;
+        totalFloorCount = SaveLoad.size;
+
         hitSize = Vector2.one * 0.8f;
         floorMask = LayerMask.GetMask("Floor");
         wallMask = LayerMask.GetMask("Wall");
@@ -37,6 +41,7 @@ public class DungeonManager : MonoBehaviour {
 
     private void Update()
     {
+        
         if (Application.isEditor && Input.GetKeyDown(KeyCode.Backspace))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

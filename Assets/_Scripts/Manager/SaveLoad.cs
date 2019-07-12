@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
+using UnityEngine.UI;
 
 
 public class SaveLoad : MonoBehaviour
 {
-    private string filename = "GameData.json";
-    private string filePath;
-    
+    //private string filename = "GameData.json";
+    //private string filePath;
+
+    public Slider worldSizeSlider;
+    public Dropdown dungeonTypeDropdown;
+
+    public static int size;
+    public static DungeonType dungeonType;
 
     private static SaveLoad _instance;
     public SaveLoad Instance
     {
         get { return _instance; }
-        //set { _instance = value; }
+        set { _instance = value; }
     }
 
     public GameData gameData;
@@ -31,27 +38,33 @@ public class SaveLoad : MonoBehaviour
         {
             gameData = new GameData();
         }
-
+        /*
         filePath = Path.Combine(Application.dataPath, filePath);
 
         Debug.Log(filePath);
-
+        */
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        SaveGameData();
-        LoadGameData();
+        //SaveGameData();
+        //LoadGameData();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
+    if(worldSizeSlider != null && dungeonTypeDropdown != null)
+        {
+            size = (int)worldSizeSlider.value;
+            dungeonType = (DungeonType)dungeonTypeDropdown.value;
+        } 
 
+        //print("Size: " + size + ", dungeonType: " + dungeonType); 
+    }
+/*
     void LoadGameData()
     {
         string json;
@@ -77,7 +90,7 @@ public class SaveLoad : MonoBehaviour
 
         File.WriteAllText(filePath, json);
     }
-
+*/
     [System.Serializable]
     public class GameData { 
         public int totalFloorCount;
