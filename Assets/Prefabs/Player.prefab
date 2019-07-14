@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 908749142}
   - component: {fileID: 559315393707292308}
   - component: {fileID: 908749143}
-  m_Layer: 12
+  m_Layer: 27
   m_Name: AttackPosCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0bcb5181d92954f9bb39850803c902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  camera: {fileID: 0}
+  damage: 500
 --- !u!1 &1569436002
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +73,7 @@ GameObject:
   - component: {fileID: 1569436003}
   - component: {fileID: 1569436005}
   - component: {fileID: 1569436004}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: FireCircleParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4754,7 +4755,7 @@ ParticleSystem:
 --- !u!199 &1569436004
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4824,7 +4825,7 @@ GameObject:
   - component: {fileID: 1986204294}
   - component: {fileID: 1986204296}
   - component: {fileID: 1986204295}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: WalkDustParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9506,7 +9507,7 @@ ParticleSystem:
 --- !u!199 &1986204295
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9576,7 +9577,7 @@ GameObject:
   - component: {fileID: 644599711030239810}
   - component: {fileID: 5004582374110278159}
   - component: {fileID: 5004582374110278160}
-  m_Layer: 12
+  m_Layer: 27
   m_Name: AttackPosSide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9635,6 +9636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0bcb5181d92954f9bb39850803c902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   damage: 5
 --- !u!1 &5589942776417506138
 GameObject:
@@ -9647,7 +9649,8 @@ GameObject:
   - component: {fileID: 2490772454170053657}
   - component: {fileID: 7304193098391392670}
   - component: {fileID: 5589942776417506139}
-  m_Layer: 12
+  - component: {fileID: 599158438216282563}
+  m_Layer: 27
   m_Name: AttackPosUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9683,7 +9686,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!114 &5589942776417506139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9696,7 +9699,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0bcb5181d92954f9bb39850803c902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  camera: {fileID: 0}
+  damage: 10
+--- !u!95 &599158438216282563
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5589942776417506138}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 821e23108327f74479316da115afda43, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8689197160816388342
 GameObject:
   m_ObjectHideFlags: 0
@@ -9876,4 +9899,5 @@ MonoBehaviour:
   attackPosCircle: {fileID: 559315393707292308}
   attackPosSide: {fileID: 5004582374110278159}
   attackPosUp: {fileID: 7304193098391392670}
+  attackPosUpObject: {fileID: 5589942776417506138}
   maxHealth: 100

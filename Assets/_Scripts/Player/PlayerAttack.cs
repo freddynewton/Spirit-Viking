@@ -25,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
     public Collider2D attackPosCircle;
     public Collider2D attackPosSide;
     public Collider2D attackPosUp;
+    public GameObject attackPosUpObject;
     //public float attackRange;
     //public LayerMask whatIsEnemies;
 
@@ -106,10 +107,11 @@ public class PlayerAttack : MonoBehaviour
         else if (Input.GetMouseButtonDown(1) && !attacking)
         {
             attacking = true;
-            timeBtwAttack = 0.3f;
+            timeBtwAttack = 2f;
             attackPosUp.enabled = true;
             anim.SetTrigger("isSlayUp");
-            Vector3 mousPos = Input.mousePosition;
+            attackPosUpObject.GetComponent<AttackTrigger>().thunder();
+            
 
         }
         else if (Input.GetKeyDown("e") && !attacking)

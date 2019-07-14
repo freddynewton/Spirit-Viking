@@ -637,6 +637,20 @@ PrefabInstance:
       propertyPath: HealthSlider
       value: 
       objectReference: {fileID: 962688165}
+    - target: {fileID: 908749143, guid: 39fdb7fe896ca794c83dd10f6ff47912, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1804805698}
+    - target: {fileID: 5004582374110278160, guid: 39fdb7fe896ca794c83dd10f6ff47912,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1804805698}
+    - target: {fileID: 5589942776417506139, guid: 39fdb7fe896ca794c83dd10f6ff47912,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1804805698}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39fdb7fe896ca794c83dd10f6ff47912, type: 3}
 --- !u!4 &8689197160816388337 stripped
