@@ -30,7 +30,6 @@ public class PlayerAttack : MonoBehaviour
     public Animator anim;
     public Collider2D attackPosCircle;
     public Collider2D attackPosSide;
-    public Collider2D attackPosUp;
     public GameObject attackPosUpObject;
 
     public int maxHealth;
@@ -70,7 +69,6 @@ public class PlayerAttack : MonoBehaviour
 
         attackPosCircle.enabled = false;
         attackPosSide.enabled = false;
-        attackPosUp.enabled = false;
 
         if (HealthSlider == null)
         {
@@ -91,8 +89,16 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AddMana(0.075f);
-        attack();
+        if (!PauseMenu.GameIsPaused)
+        {
+            AddMana(0.075f);
+            attack();
+            
+            if(curHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     public void attack()
@@ -107,7 +113,7 @@ public class PlayerAttack : MonoBehaviour
                 attacking = false;
                 attackPosCircle.enabled = false;
                 attackPosSide.enabled = false;
-                attackPosUp.enabled = false;
+
                 
             }
         }
@@ -124,10 +130,11 @@ public class PlayerAttack : MonoBehaviour
         {
             attacking = true;
             timeBtwAttack = 2f;
-            attackPosUp.enabled = true;
             anim.SetTrigger("isSlayUp");
             TakeMana(35f);
-            attackPosUpObject.GetComponent<AttackTrigger>().thunder();
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 1;
+            attackPosUpObject.GetComponent<AttackTrigger>().thunder(mousePos, attackPosUpObject);
             
 
         }

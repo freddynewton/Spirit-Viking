@@ -5,17 +5,6 @@ using UnityEngine;
 public class AttackTrigger : MonoBehaviour
 {
     private Animator upAnim;
-    public Camera camera;
-
-    /*
-    private void Update()
-    {
-        while (transform.childCount > 0)
-        {
-            Destroy(transform.GetChild(0).gameObject);
-        }
-    }
-    */
 
     private void Start()
     {
@@ -36,11 +25,11 @@ public class AttackTrigger : MonoBehaviour
     }
 
 
-    public void thunder()
+    public void thunder(Vector3 mousePos, GameObject thunderprefab)
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        transform.position = mousePos;
+        
+        GameObject clone = Instantiate(thunderprefab, mousePos, Quaternion.identity);
         upAnim.SetTrigger("thunder");
+        Destroy(clone, 1f);
     }
 }
