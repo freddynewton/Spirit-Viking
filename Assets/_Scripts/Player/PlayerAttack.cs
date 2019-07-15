@@ -9,10 +9,16 @@ using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
+    
     [HideInInspector]
     public int curHealth;
     [HideInInspector]
+    public float curMana;
+    [HideInInspector]
     public Slider HealthSlider;
+    [HideInInspector]
+    public Slider ManaSlider;
+
 
     private float timeBtwAttack;
     private int killedEnemiesCounter;
@@ -26,10 +32,11 @@ public class PlayerAttack : MonoBehaviour
     public Collider2D attackPosSide;
     public Collider2D attackPosUp;
     public GameObject attackPosUpObject;
-    //public float attackRange;
-    //public LayerMask whatIsEnemies;
 
     public int maxHealth;
+    public float maxMana;
+
+    ParticleSystem fireCircle;
 
     public static PlayerAttack Instance { get; private set; }
 
@@ -55,10 +62,12 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
-
     // Start is called before the first frame update
     void Start()
     {
+        fireCicle = GameObject.Find("FireCircleParticle").GetComponent<ParticleSystem>();
+        fireCicle.Stop();
+
         attackPosCircle.enabled = false;
         attackPosSide.enabled = false;
         attackPosUp.enabled = false;
@@ -67,15 +76,22 @@ public class PlayerAttack : MonoBehaviour
         {
             HealthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
         }
+        if (ManaSlider == null)
+        {
+            ManaSlider = GameObject.Find("ManaSlider").GetComponent<Slider>();
+        }
+
         this.transform.position = Vector3.zero;
         curHealth = maxHealth;
+        curMana = maxMana;
         HealthSlider.value = maxHealth; 
         anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        AddMana(0.075f);
         attack();
     }
 
@@ -104,22 +120,25 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("isSlaySide");
 
         }
-        else if (Input.GetMouseButtonDown(1) && !attacking)
+        else if (Input.GetMouseButtonDown(1) && !attacking && curMana >= 35)
         {
             attacking = true;
             timeBtwAttack = 2f;
             attackPosUp.enabled = true;
             anim.SetTrigger("isSlayUp");
+            TakeMana(35f);
             attackPosUpObject.GetComponent<AttackTrigger>().thunder();
             
 
         }
-        else if (Input.GetKeyDown("e") && !attacking)
+        else if (Input.GetKeyDown("e") && !attacking && curMana >= 100)
         {
             attacking = true;
             timeBtwAttack = 5f;
             attackPosCircle.enabled = true;
             anim.SetTrigger("isSlayCircle");
+            TakeMana(100f); 
+            fireCicle.Play();
 
         }
     }
@@ -132,6 +151,7 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+
     public void TakeHeal(int heal)
     {
         Debug.Log("Player TakeHeal: " + heal);
@@ -143,5 +163,21 @@ public class PlayerAttack : MonoBehaviour
 
         HealthSlider.value = curHealth;
     }
+
+    public void TakeMana(float mana)
+    {
+        curMana -= mana;
+        ManaSlider.value = curMana;
+    }
+
+    public void AddMana(float mana)
+    {
+        if (curMana <= maxMana)
+        {
+            curMana += mana;
+            ManaSlider.value = curMana;
+        }
+    }
+    
 
 }
