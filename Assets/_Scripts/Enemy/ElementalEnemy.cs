@@ -30,6 +30,18 @@ public class ElementalEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.GetComponent<Enemy>().health > 0)
+        {
+            life();
+        }
+        else
+        {
+            anim.SetTrigger("death");
+        }
+    }
+
+    void life()
+    {
         Vector3 dir = -(this.transform.position - player.transform.position).normalized;
 
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, startTargeting, floorMask);
@@ -58,7 +70,7 @@ public class ElementalEnemy : MonoBehaviour {
                 lookAtPlayer(true);
                 anim.SetBool("isWalking", true);
             }
-            
+
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
             {
                 lookAtPlayer(true);
@@ -76,7 +88,8 @@ public class ElementalEnemy : MonoBehaviour {
             {
                 timeBtwShots -= Time.deltaTime;
             }
-        }  else
+        }
+        else
         {
             anim.SetBool("isWalking", false);
         }
@@ -84,7 +97,7 @@ public class ElementalEnemy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && gameObject.GetComponent<Enemy>().health > 0)
         {
             collision.GetComponent<PlayerAttack>().TakeDamage(damage);
           

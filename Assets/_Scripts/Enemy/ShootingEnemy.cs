@@ -32,8 +32,17 @@ public class ShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()  
     {
+        if(gameObject.GetComponent<Enemy>().health > 0)
+        {
+            life();
+        } else
+        {
+            anim.SetTrigger("death");
+        }
+    }
 
-
+    public void life()
+    {
         Vector3 dir = -(this.transform.position - player.transform.position).normalized;
 
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, startTargeting, floorMask);
@@ -55,7 +64,8 @@ public class ShootingEnemy : MonoBehaviour
 
 
 
-        if (Vector2.Distance(transform.position, player.position) < startTargeting && playerInSight) {
+        if (Vector2.Distance(transform.position, player.position) < startTargeting && playerInSight)
+        {
 
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
@@ -63,11 +73,14 @@ public class ShootingEnemy : MonoBehaviour
                 anim.SetBool("isWalking", true);
                 lookAtPlayer(false);
             }
-            else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) {
+            else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
+            {
                 transform.position = this.transform.position;
                 anim.SetBool("isWalking", false);
                 lookAtPlayer(false);
-            } else if (Vector2.Distance(transform.position, player.position) < retreatDistance) {
+            }
+            else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
+            {
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
                 anim.SetBool("isWalking", true);
                 lookAtPlayer(true);
@@ -79,16 +92,17 @@ public class ShootingEnemy : MonoBehaviour
                 anim.SetTrigger("isShooting");
                 Instantiate(projectile, transform.position, Quaternion.identity);
                 timeBtwShots = startTimeBtwShots;
-            } else
+            }
+            else
             {
                 timeBtwShots -= Time.deltaTime;
             }
-        } else
+        }
+        else
         {
             anim.SetBool("isWalking", false);
         }
     }
-
 
     public void lookAtPlayer(bool negiert)
     {

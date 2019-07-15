@@ -38,15 +38,9 @@ public class AttackTrigger : MonoBehaviour
 
     public void thunder()
     {
-        RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            gameObject.transform.position = hit.transform.position;
-        }
-        
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        transform.position = mousePos;
         upAnim.SetTrigger("thunder");
-
     }
 }

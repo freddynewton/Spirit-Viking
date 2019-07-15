@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     public int maxHealth;
     public int points;
 
+    bool dead = false;
+
     public ScoreManager scoreManager;
 
     //public GameObject bloodEffect;
@@ -23,12 +25,17 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
         if(health <= 0)
         {
-
-            scoreManager.score++;
-            scoreManager.points += points;
-            Destroy(gameObject);
+            if (!dead)
+            {
+                scoreManager.score++;
+                scoreManager.points += points;
+                dead = true;
+            }
+            Destroy(gameObject, 2f);
         }
         
     }
