@@ -13,12 +13,14 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-       
-        Vector3 desiredPosition = target.position + offset;
-        //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        Vector3 smoothedPosition = desiredPosition;
-        transform.position = smoothedPosition;
+        if (!DeathMenu.PlayerIsDead)
+        {
+            Vector3 desiredPosition = target.position + offset;
+            //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            Vector3 smoothedPosition = desiredPosition;
+            transform.position = smoothedPosition;
 
-        transform.LookAt(target);
+            transform.LookAt(target);
+        }
     }
 }

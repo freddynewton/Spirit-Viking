@@ -5,16 +5,16 @@ using UnityEngine;
 public class AttackTrigger : MonoBehaviour
 {
     private Animator upAnim;
-
+    public int damage = 5;
     private void Start()
     {
         if(gameObject.name == "AttackPosUp")
         {
-            upAnim = GetComponent<Animator>();
+            upAnim = gameObject.GetComponent<Animator>();
         }
     }
 
-    public int damage = 5;
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,7 +29,6 @@ public class AttackTrigger : MonoBehaviour
     {
         
         GameObject clone = Instantiate(thunderprefab, mousePos, Quaternion.identity);
-        upAnim.SetTrigger("thunder");
         Destroy(clone, 1f);
     }
 }

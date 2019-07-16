@@ -32,7 +32,7 @@ public class ShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()  
     {
-        if(gameObject.GetComponent<Enemy>().health > 0)
+        if(gameObject.GetComponent<Enemy>().health > 0 && !DeathMenu.PlayerIsDead)
         {
             life();
         } else

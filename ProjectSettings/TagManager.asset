@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - UISlider
+  - Thunder
   layers:
   - Default
   - TransparentFX

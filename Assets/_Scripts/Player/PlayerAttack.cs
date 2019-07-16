@@ -41,8 +41,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
-        
-        this.transform.position = Vector3.zero;
+
+        curHealth = maxHealth;
+        curMana = maxMana;
+        DeathMenu.PlayerIsDead = false;
+
+
         if (Instance == null)
         {
             Instance = this;
@@ -54,12 +58,25 @@ public class PlayerAttack : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        transform.position = Vector3.zero;
-    }
+        PauseMenu.GameIsPaused = false;
+        DeathMenu.PlayerIsDead = false;
+        if (scene.name == "Game")
+        {
+            if (gameObject.GetComponent<PlayerAttack>() != null)
+            {
+                transform.position = Vector3.zero;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
+    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -89,9 +106,9 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.GameIsPaused)
+        if (!PauseMenu.GameIsPaused && !DeathMenu.PlayerIsDead)
         {
-            AddMana(0.075f);
+            AddMana(0.062f);
             attack();
             
             if(curHealth <= 0)
@@ -131,7 +148,7 @@ public class PlayerAttack : MonoBehaviour
             attacking = true;
             timeBtwAttack = 2f;
             anim.SetTrigger("isSlayUp");
-            TakeMana(35f);
+            TakeMana(45f);
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 1;
             attackPosUpObject.GetComponent<AttackTrigger>().thunder(mousePos, attackPosUpObject);
@@ -156,6 +173,12 @@ public class PlayerAttack : MonoBehaviour
         curHealth -= damage;
         HealthSlider.value = curHealth;
 
+        if(curHealth <= 0)
+        {
+            //anim.SetTrigger("isDead");
+            Destroy(gameObject);
+            DeathMenu.PlayerIsDead = true;
+        }
     }
 
 
@@ -185,6 +208,14 @@ public class PlayerAttack : MonoBehaviour
             ManaSlider.value = curMana;
         }
     }
-    
 
+    IEnumerator wait(float timeToWait)
+    {
+        float incrementToRemove = 0.5f;
+        while (timeToWait > 0)
+        {
+            yield return new WaitForSeconds(incrementToRemove);
+            timeToWait -= incrementToRemove;
+        }
+    }
 }

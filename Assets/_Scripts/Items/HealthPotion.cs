@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthPotion : MonoBehaviour
 {
     public int healAmount;
+    public int manaAmount;
     public int points;
     public ScoreManager scoreManager;
 
@@ -18,6 +19,7 @@ public class HealthPotion : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerAttack>().TakeHeal(healAmount);
+            collision.GetComponent<PlayerAttack>().AddMana(manaAmount);
             scoreManager.points += points;
             DestroyObject();
         }

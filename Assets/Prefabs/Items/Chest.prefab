@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4962c1b3847debe47bcbb747181c6eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healAmount: 0
+  healAmount: 50
+  manaAmount: 50
   points: 100
   scoreManager: {fileID: 0}
