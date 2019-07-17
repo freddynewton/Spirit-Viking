@@ -706,6 +706,7 @@ GameObject:
   - component: {fileID: 793376685}
   - component: {fileID: 793376686}
   - component: {fileID: 793376687}
+  - component: {fileID: 793376688}
   m_Layer: 0
   m_Name: Enviroment
   m_TagString: Untagged
@@ -839,6 +840,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &793376688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793376684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1202f9f247025314a99a76e886906345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTrack: 1
+  switchOnStart: 1
 --- !u!1 &891002386
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,6 +67,8 @@
      <Compile Include="Assets\_Scripts\Enemy\StachelBodenDamage.cs" />
      <Compile Include="Assets\_Scripts\Items\HealthPotion.cs" />
      <Compile Include="Assets\_Scripts\Manager\MainMenuCanvas.cs" />
+     <Compile Include="Assets\_Scripts\Manager\MusicManager.cs" />
+     <Compile Include="Assets\_Scripts\Manager\MusicSwitcher.cs" />
      <Compile Include="Assets\_Scripts\Manager\SaveLoad.cs" />
      <Compile Include="Assets\_Scripts\Manager\SceneLoader.cs" />
      <Compile Include="Assets\_Scripts\Manager\ScoreManager.cs" />

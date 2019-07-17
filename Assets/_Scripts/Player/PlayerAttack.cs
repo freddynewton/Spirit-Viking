@@ -108,7 +108,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!PauseMenu.GameIsPaused && !DeathMenu.PlayerIsDead)
         {
-            AddMana(0.062f);
+            AddMana(0.04f);
             attack();
             
             if(curHealth <= 0)
