@@ -11,9 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     LayerMask obstacleMask;
 
+    public SFXManager sfxMan;
+    private float soundTime = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
+        sfxMan = GameObject.FindObjectOfType<SFXManager>();
+
         rb = GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
         obstacleMask = LayerMask.GetMask("Wall", "Enemy");
@@ -23,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         move();
+        
     }
 
     void move()
@@ -47,6 +53,15 @@ public class PlayerMovement : MonoBehaviour
             this.transform.localScale = new Vector3(1f, 1f, 1f);
         }
         transform.position = transform.position + movement * Time.deltaTime;
+
+        if(movement.magnitude != 0 && soundTime <= 0)
+        {
+            sfxMan.audioTracksPlayer[0].Play();
+            soundTime = 0.3f;
+        } else
+        {
+            soundTime -= Time.deltaTime;
+        }
     }
 
 }
