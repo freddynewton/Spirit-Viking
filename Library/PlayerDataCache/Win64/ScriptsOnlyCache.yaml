@@ -10,9 +10,12 @@ ScriptsOnlyBuild:
     - ExitDoorWay
     - HealthPotion
     - MainMenuCanvas
+    - MusicManager
+    - MusicSwitcher
     - PauseMenu
     - PlayerAttack
     - PlayerMovement
+    - SFXManager
     - SaveLoad
     - SceneLoader
     - ScoreManager
@@ -23,10 +26,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
@@ -78,55 +79,57 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9444}
+      Script: {instanceID: 9432}
     - Class: 114
-      Script: {instanceID: 9446}
+      Script: {instanceID: 9434}
     - Class: 114
-      Script: {instanceID: 9482}
+      Script: {instanceID: 9464}
     - Class: 114
-      Script: {instanceID: 9486}
+      Script: {instanceID: 9468}
     - Class: 114
-      Script: {instanceID: 9562}
+      Script: {instanceID: 9534}
     - Class: 114
-      Script: {instanceID: 9564}
+      Script: {instanceID: 9536}
     - Class: 114
-      Script: {instanceID: 9570}
+      Script: {instanceID: 9542}
     - Class: 114
-      Script: {instanceID: 9576}
+      Script: {instanceID: 9548}
     - Class: 114
-      Script: {instanceID: 9584}
+      Script: {instanceID: 9556}
     - Class: 114
-      Script: {instanceID: 9616}
+      Script: {instanceID: 9588}
     - Class: 114
-      Script: {instanceID: 9618}
+      Script: {instanceID: 9590}
     - Class: 114
-      Script: {instanceID: 9620}
+      Script: {instanceID: 9592}
     - Class: 114
-      Script: {instanceID: 9622}
+      Script: {instanceID: 9594}
     - Class: 114
-      Script: {instanceID: 9638}
+      Script: {instanceID: 9608}
     - Class: 114
-      Script: {instanceID: 9860}
+      Script: {instanceID: 9792}
     - Class: 114
-      Script: {instanceID: 9910}
+      Script: {instanceID: 9814}
     - Class: 114
-      Script: {instanceID: 9946}
+      Script: {instanceID: 9858}
     - Class: 114
-      Script: {instanceID: 10082}
+      Script: {instanceID: 9888}
     - Class: 114
-      Script: {instanceID: 10146}
+      Script: {instanceID: 10010}
     - Class: 114
-      Script: {instanceID: 10148}
+      Script: {instanceID: 10064}
     - Class: 114
-      Script: {instanceID: 10174}
+      Script: {instanceID: 10066}
     - Class: 114
-      Script: {instanceID: 10558}
+      Script: {instanceID: 10092}
     - Class: 114
-      Script: {instanceID: 10944}
+      Script: {instanceID: 10284}
     - Class: 114
-      Script: {instanceID: 10978}
+      Script: {instanceID: 10434}
     - Class: 114
-      Script: {instanceID: 24844}
+      Script: {instanceID: 10782}
+    - Class: 114
+      Script: {instanceID: 10814}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -172,58 +175,68 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9414}
+      Script: {instanceID: 9402}
     - Class: 114
-      Script: {instanceID: 9470}
+      Script: {instanceID: 9452}
     - Class: 114
-      Script: {instanceID: 9472}
+      Script: {instanceID: 9454}
     - Class: 114
-      Script: {instanceID: 9516}
+      Script: {instanceID: 9494}
+    - Class: 114
+      Script: {instanceID: 9510}
     - Class: 114
       Script: {instanceID: 9534}
     - Class: 114
-      Script: {instanceID: 9562}
+      Script: {instanceID: 9536}
+    - Class: 114
+      Script: {instanceID: 9540}
+    - Class: 114
+      Script: {instanceID: 9542}
+    - Class: 114
+      Script: {instanceID: 9548}
+    - Class: 114
+      Script: {instanceID: 9556}
     - Class: 114
       Script: {instanceID: 9564}
     - Class: 114
-      Script: {instanceID: 9568}
-    - Class: 114
-      Script: {instanceID: 9570}
-    - Class: 114
-      Script: {instanceID: 9576}
+      Script: {instanceID: 9582}
     - Class: 114
       Script: {instanceID: 9584}
     - Class: 114
+      Script: {instanceID: 9588}
+    - Class: 114
+      Script: {instanceID: 9590}
+    - Class: 114
       Script: {instanceID: 9592}
     - Class: 114
-      Script: {instanceID: 9610}
+      Script: {instanceID: 9594}
     - Class: 114
-      Script: {instanceID: 9612}
+      Script: {instanceID: 9596}
     - Class: 114
-      Script: {instanceID: 9616}
+      Script: {instanceID: 9792}
     - Class: 114
-      Script: {instanceID: 9618}
+      Script: {instanceID: 9804}
     - Class: 114
-      Script: {instanceID: 9620}
+      Script: {instanceID: 9810}
     - Class: 114
-      Script: {instanceID: 9622}
+      Script: {instanceID: 9898}
     - Class: 114
-      Script: {instanceID: 9624}
+      Script: {instanceID: 10182}
     - Class: 114
-      Script: {instanceID: 9850}
+      Script: {instanceID: 10198}
     - Class: 114
-      Script: {instanceID: 9958}
+      Script: {instanceID: 10446}
     - Class: 114
-      Script: {instanceID: 10274}
+      Script: {instanceID: 10470}
     - Class: 114
-      Script: {instanceID: 10290}
-    - Class: 114
-      Script: {instanceID: 10570}
-    - Class: 114
-      Script: {instanceID: 10598}
+      Script: {instanceID: 10838}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -731,10 +744,22 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: b67b9b3e2b7920651040280200ea0999
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MusicSwitcher
+  - hash:
+      serializedVersion: 2
       Hash: f08a111e17bb701f9c9ec57bb78d9920
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: d2b7959172c393a0030ddd1ec3db7aa9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MusicManager
   - hash:
       serializedVersion: 2
       Hash: 3f0b469d844365c00a63de0437c9b29e
@@ -773,7 +798,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: bd39db91a16d4f00795b309d105d27c9
+      Hash: e256077e45fed3235d0c27c6b2e135ad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -839,7 +864,7 @@ ScriptsOnlyBuild:
     className: NetworkTransformVisualizer
   - hash:
       serializedVersion: 2
-      Hash: 80c74525eecdaf690b119a37e0844709
+      Hash: 06f63a21d32b3ce8657a470e2af52fe3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerAttack
@@ -909,6 +934,12 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkStartPosition
+  - hash:
+      serializedVersion: 2
+      Hash: 054f6c5811231a033187770b8891d578
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DeathMenu
   - hash:
       serializedVersion: 2
       Hash: 3f8d7b92a6be3c715e55d5cfa7cc8384
@@ -1079,6 +1110,12 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
+      Hash: 7a3a557231155035d7abf3bfac86121c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SFXManager
+  - hash:
+      serializedVersion: 2
       Hash: e0ee4b3d4e27318934cc940a969d3d96
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
@@ -1101,12 +1138,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 054f6c5811231a033187770b8891d578
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DeathMenu
   platform: 19
   scenePathNames:
   - Assets/_Scenes/MainMenu.unity
