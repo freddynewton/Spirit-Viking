@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     bool dead = false;
 
+    private Animator anim;
     public ScoreManager scoreManager;
 
     //public GameObject bloodEffect;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
         health = maxHealth;
         scoreManager = FindObjectOfType<ScoreManager>();
     }
@@ -45,5 +47,9 @@ public class Enemy : MonoBehaviour
         //Instantiate(bloodEffect, transform.position, Quaternion.identity);
         health -= damage;
 
+        if(health > 0)
+        {
+            anim.SetTrigger("hurt");
+        }
     }
 }

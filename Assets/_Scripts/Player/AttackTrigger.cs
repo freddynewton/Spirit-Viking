@@ -6,9 +6,12 @@ public class AttackTrigger : MonoBehaviour
 {
     private Animator upAnim;
     public int damage = 5;
+
+
     private void Start()
     {
-        if(gameObject.name == "AttackPosUp")
+
+        if (gameObject.name == "AttackPosUp")
         {
             upAnim = gameObject.GetComponent<Animator>();
         }
@@ -27,7 +30,7 @@ public class AttackTrigger : MonoBehaviour
 
     public void thunder(Vector3 mousePos, GameObject thunderprefab)
     {
-        
+
         GameObject clone = Instantiate(thunderprefab, mousePos, Quaternion.identity);
         Destroy(clone, 1f);
     }

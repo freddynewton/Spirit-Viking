@@ -32,6 +32,8 @@ public class PlayerAttack : MonoBehaviour
     public Collider2D attackPosSide;
     public GameObject attackPosUpObject;
 
+    public SFXManager sfxMan;
+
     public int maxHealth;
     public float maxMana;
 
@@ -81,6 +83,8 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sfxMan = GameObject.FindObjectOfType<SFXManager>();
+
         fireCicle = GameObject.Find("FireCircleParticle").GetComponent<ParticleSystem>();
         fireCicle.Stop();
 
@@ -141,6 +145,7 @@ public class PlayerAttack : MonoBehaviour
             timeBtwAttack = 0.3f;
             attackPosSide.enabled = true;
             anim.SetTrigger("isSlaySide");
+            sfxMan.audioTracksPlayer[1].Play();
 
         }
         else if (Input.GetMouseButtonDown(1) && !attacking && curMana >= 35)
@@ -149,6 +154,7 @@ public class PlayerAttack : MonoBehaviour
             timeBtwAttack = 2f;
             anim.SetTrigger("isSlayUp");
             TakeMana(45f);
+            sfxMan.audioTracksPlayer[2].Play();
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 1;
             attackPosUpObject.GetComponent<AttackTrigger>().thunder(mousePos, attackPosUpObject);
@@ -161,6 +167,7 @@ public class PlayerAttack : MonoBehaviour
             timeBtwAttack = 5f;
             attackPosCircle.enabled = true;
             anim.SetTrigger("isSlayCircle");
+            sfxMan.audioTracksPlayer[3].Play();
             TakeMana(100f); 
             fireCicle.Play();
 
